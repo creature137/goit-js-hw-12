@@ -60,6 +60,8 @@ async function handleSearch(event) {
       displayImages(data.hits, gallery, lightboxGallery);
 
       loadMoreBtn.style.display = 'block';
+
+      form.reset();
     }
   } catch {
     iziToast.error({
@@ -81,6 +83,14 @@ async function loadMore() {
     const data = await fetchImages(currentQuery, currentPage);
 
     displayImages(data.hits, gallery, lightboxGallery);
+
+    const image = document.querySelector('.gallery-item');
+    const imageHeight = image.getBoundingClientRect().height;
+
+    window.scrollBy({
+      top: imageHeight * 2 + 24 * 2,
+      behavior: 'smooth',
+    });
 
     const totalPages = Math.ceil(data.totalHits / 15);
     if (currentPage >= totalPages) {

@@ -60,12 +60,10 @@
 
 .gallery-item {
   width: calc((100% - 24px * 2) / 3);
+  height: 300px;
+  overflow: hidden;
   border: 1px solid #808080;
   position: relative;
-}
-
-.gallery-item img {
-  height: 100%;
 }
 
 .gallery-info {
